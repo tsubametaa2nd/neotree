@@ -17,16 +17,16 @@ const variantClasses = {
 };
 
 const paddingClasses = {
-  sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
-  xl: "p-10 md:p-12",
+  sm: "p-3 sm:p-4",
+  md: "p-4 sm:p-6",
+  lg: "p-5 sm:p-6 md:p-8",
+  xl: "p-6 sm:p-8 md:p-10 lg:p-12",
 };
 </script>
 
 <template>
   <div
-    class="rounded-2xl shadow-soft border transition-all duration-300"
+    class="rounded-xl sm:rounded-2xl shadow-soft border transition-all duration-300"
     :class="[variantClasses[variant], paddingClasses[padding]]"
   >
     <slot />

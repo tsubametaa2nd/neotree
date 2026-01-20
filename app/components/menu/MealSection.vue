@@ -46,36 +46,38 @@ const iconMap: Record<string, any> = {
 </script>
 
 <template>
-  <UiCard padding="lg">
-    <div class="flex items-center justify-between mb-6">
-      <div class="flex items-center gap-3">
+  <UiCard padding="md" class="sm:!p-6">
+    <div class="flex items-center justify-between mb-4 sm:mb-6">
+      <div class="flex items-center gap-2 sm:gap-3">
         <div
-          class="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-100 flex items-center justify-center"
         >
           <component
             :is="iconMap[section.icon]"
-            class="w-6 h-6 text-primary-600"
+            class="w-5 h-5 sm:w-6 sm:h-6 text-primary-600"
           />
         </div>
         <div>
-          <h3 class="text-lg font-semibold text-secondary-900">
+          <h3 class="text-base sm:text-lg font-semibold text-secondary-900">
             {{ section.title }}
           </h3>
-          <p class="text-sm text-secondary-500">{{ section.time }}</p>
+          <p class="text-xs sm:text-sm text-secondary-500">
+            {{ section.time }}
+          </p>
         </div>
       </div>
       <div class="text-right">
-        <p class="text-2xl font-bold text-primary-600">
+        <p class="text-xl sm:text-2xl font-bold text-primary-600">
           {{ Math.round(totalCalories) }}
         </p>
-        <p class="text-xs text-secondary-500">
+        <p class="text-[10px] sm:text-xs text-secondary-500">
           dari {{ section.targetCalories }} kkal
         </p>
       </div>
     </div>
 
-    <div class="mb-6">
-      <div class="h-2 bg-secondary-100 rounded-full overflow-hidden">
+    <div class="mb-4 sm:mb-6">
+      <div class="h-1.5 sm:h-2 bg-secondary-100 rounded-full overflow-hidden">
         <div
           class="h-full rounded-full transition-all duration-500 ease-out"
           :class="caloriePercentage > 100 ? 'bg-amber-500' : 'bg-primary-500'"
@@ -84,65 +86,85 @@ const iconMap: Record<string, any> = {
       </div>
     </div>
 
-    <div class="space-y-4">
+    <div class="space-y-3 sm:space-y-4">
       <p
         v-if="section.items.length === 0"
-        class="text-secondary-500 text-center py-4"
+        class="text-secondary-500 text-center py-4 text-sm sm:text-base"
       >
         Tidak ada menu untuk ditampilkan
       </p>
       <div
         v-for="item in section.items"
         :key="item.id"
-        class="group p-5 rounded-xl border transition-all duration-300 hover:shadow-soft"
+        class="group p-3 sm:p-5 rounded-lg sm:rounded-xl border transition-all duration-300 hover:shadow-soft"
         :class="
           item.isAlternative
             ? 'bg-amber-50 border-amber-200'
             : 'bg-white border-secondary-200 hover:border-primary-300'
         "
       >
-        <div v-if="item.isAlternative" class="flex items-center gap-2 mb-3">
+        <div
+          v-if="item.isAlternative"
+          class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3"
+        >
           <span
-            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-medium"
+            class="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] sm:text-xs font-medium"
           >
-            <LucideRefreshCw class="w-3 h-3" />
+            <LucideRefreshCw class="w-2.5 h-2.5 sm:w-3 sm:h-3" />
             Menu Alternatif
           </span>
-          <span v-if="item.alternativeFor" class="text-xs text-amber-600">
+          <span
+            v-if="item.alternativeFor"
+            class="text-[10px] sm:text-xs text-amber-600"
+          >
             Pengganti: {{ item.alternativeFor }}
           </span>
         </div>
 
-        <div class="flex items-start justify-between gap-4 mb-4">
+        <div
+          class="flex items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4"
+        >
           <h4
-            class="font-semibold text-secondary-900 group-hover:text-primary-700 transition-colors"
+            class="font-semibold text-secondary-900 group-hover:text-primary-700 transition-colors text-sm sm:text-base leading-snug"
           >
             {{ item.name }}
           </h4>
           <div
-            class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-100 text-primary-700 text-sm font-medium flex-shrink-0"
+            class="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-primary-100 text-primary-700 text-xs sm:text-sm font-medium flex-shrink-0"
           >
-            <LucideFlame class="w-4 h-4" />
+            <LucideFlame class="w-3 h-3 sm:w-4 sm:h-4" />
             {{ Math.round(item.nutrition.calories) }} kkal
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-3 mb-4">
-          <div class="text-center p-2 rounded-lg bg-secondary-50">
-            <p class="text-xs text-secondary-500 mb-0.5">Protein</p>
-            <p class="font-medium text-secondary-800">
+        <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <div
+            class="text-center p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-secondary-50"
+          >
+            <p class="text-[10px] sm:text-xs text-secondary-500 mb-0.5">
+              Protein
+            </p>
+            <p class="font-medium text-secondary-800 text-xs sm:text-base">
               {{ item.nutrition.protein.toFixed(1) }}g
             </p>
           </div>
-          <div class="text-center p-2 rounded-lg bg-secondary-50">
-            <p class="text-xs text-secondary-500 mb-0.5">Lemak</p>
-            <p class="font-medium text-secondary-800">
+          <div
+            class="text-center p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-secondary-50"
+          >
+            <p class="text-[10px] sm:text-xs text-secondary-500 mb-0.5">
+              Lemak
+            </p>
+            <p class="font-medium text-secondary-800 text-xs sm:text-base">
               {{ item.nutrition.fat.toFixed(1) }}g
             </p>
           </div>
-          <div class="text-center p-2 rounded-lg bg-secondary-50">
-            <p class="text-xs text-secondary-500 mb-0.5">Karbohidrat</p>
-            <p class="font-medium text-secondary-800">
+          <div
+            class="text-center p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-secondary-50"
+          >
+            <p class="text-[10px] sm:text-xs text-secondary-500 mb-0.5">
+              Karbo
+            </p>
+            <p class="font-medium text-secondary-800 text-xs sm:text-base">
               {{ item.nutrition.carbs.toFixed(1) }}g
             </p>
           </div>
@@ -150,12 +172,12 @@ const iconMap: Record<string, any> = {
 
         <div
           v-if="item.reason"
-          class="flex items-start gap-2 p-3 rounded-lg bg-primary-50 border border-primary-100"
+          class="flex items-start gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-md sm:rounded-lg bg-primary-50 border border-primary-100"
         >
           <LucideLightbulb
-            class="w-4 h-4 text-primary-600 flex-shrink-0 mt-0.5"
+            class="w-3 h-3 sm:w-4 sm:h-4 text-primary-600 flex-shrink-0 mt-0.5"
           />
-          <p class="text-sm text-secondary-700 leading-relaxed">
+          <p class="text-xs sm:text-sm text-secondary-700 leading-relaxed">
             {{ item.reason }}
           </p>
         </div>

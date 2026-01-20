@@ -42,17 +42,17 @@ const columnClasses = {
 </script>
 
 <template>
-  <fieldset class="space-y-3">
+  <fieldset class="space-y-2 sm:space-y-3">
     <legend class="input-label">
       {{ label }}
       <span v-if="required" class="text-primary-600">*</span>
     </legend>
-    <div :class="['grid gap-4', columnClasses[columns]]">
+    <div :class="['grid gap-2 sm:gap-4', columnClasses[columns]]">
       <label
         v-for="option in options"
         :key="option.value"
         :for="`${id}-${option.value}`"
-        class="group flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all duration-300 relative overflow-hidden"
+        class="group flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl border cursor-pointer transition-all duration-300 relative overflow-hidden"
         :class="[
           modelValue.includes(option.value)
             ? 'border-primary-500 bg-primary-50/80 shadow-sm ring-1 ring-primary-500/20'
@@ -61,7 +61,7 @@ const columnClasses = {
         ]"
       >
         <div
-          class="relative flex items-center justify-center mt-0.5 w-6 h-6 rounded-lg border transition-all duration-200 shrink-0"
+          class="relative flex items-center justify-center mt-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg border transition-all duration-200 shrink-0"
           :class="[
             modelValue.includes(option.value)
               ? 'border-primary-600 bg-primary-600'
@@ -69,7 +69,7 @@ const columnClasses = {
           ]"
         >
           <LucideCheck
-            class="w-4 h-4 text-white transition-all duration-200 transform"
+            class="w-3 h-3 sm:w-4 sm:h-4 text-white transition-all duration-200 transform"
             :class="
               modelValue.includes(option.value)
                 ? 'scale-100 opacity-100'
@@ -86,7 +86,7 @@ const columnClasses = {
           />
         </div>
         <span
-          class="text-base font-medium transition-colors duration-200 pt-0.5"
+          class="text-sm sm:text-base font-medium transition-colors duration-200 pt-0.5"
           :class="
             modelValue.includes(option.value)
               ? 'text-primary-900'
@@ -97,7 +97,7 @@ const columnClasses = {
         </span>
       </label>
     </div>
-    <p v-if="helper" class="input-helper">
+    <p v-if="helper" class="input-helper text-xs sm:text-sm">
       {{ helper }}
     </p>
   </fieldset>

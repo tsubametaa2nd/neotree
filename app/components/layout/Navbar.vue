@@ -48,7 +48,7 @@ onUnmounted(() => {
           >
             <img
               src="/assets/nutree.svg"
-              alt="Nutree Logo"
+              alt="Neotree Logo"
               class="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Motion>
@@ -127,7 +127,7 @@ onUnmounted(() => {
           <div class="flex items-center justify-between mb-8">
             <img
               src="/assets/nutree.svg"
-              alt="Nutree Logo"
+              alt="Neotree Logo"
               class="h-10 w-10 object-contain"
             />
             <button
@@ -162,7 +162,7 @@ onUnmounted(() => {
           </div>
 
           <div class="mt-auto pt-6 border-t border-slate-100 text-center">
-            <p class="text-xs text-slate-400">© 2024 NutriHarian</p>
+            <p class="text-xs text-slate-400">© 2024 Neotree</p>
           </div>
         </div>
       </div>

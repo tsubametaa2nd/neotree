@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Motion, AnimatePresence } from "motion-v";
 useSeoMeta({
-  title: "Rekomendasi Menu Anda - NutriHarian",
+  title: "Rekomendasi Menu Anda - Neotree",
   description:
     "Lihat rekomendasi menu sehat harian yang dipersonalisasi berdasarkan kebutuhan kalori Anda.",
 });
@@ -157,7 +157,7 @@ const fetchRecommendations = async () => {
 
   try {
     // Get user data from session storage
-    const storedData = sessionStorage.getItem("nutriharian-user-data");
+    const storedData = sessionStorage.getItem("neotree-user-data");
     if (!storedData) {
       router.push("/input");
       return;
@@ -344,29 +344,25 @@ const listVariant = {
 </script>
 
 <template>
-  <div class="py-12 md:py-16">
-    <div class="container-custom">
+  <div class="py-8 sm:py-12 md:py-16">
+    <div class="container-custom px-4 sm:px-6">
       <Motion initial="initial" animate="enter" :variants="staggerContainer">
         <div
-          class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8"
+          class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8"
         >
           <Motion :variants="fadeInUp">
-            <NuxtLink
-              to="/input"
-              class="inline-flex items-center gap-2 text-sm text-secondary-500 hover:text-primary-600 mb-2 transition-colors"
+            <h1
+              class="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-900"
             >
-              <LucideArrowLeft class="w-4 h-4" />
-              Ubah Data
-            </NuxtLink>
-            <h1 class="text-3xl md:text-4xl font-bold text-secondary-900">
               Rekomendasi Menu Anda
             </h1>
           </Motion>
-          <Motion :variants="fadeInUp">
+          <Motion :variants="fadeInUp" class="w-full sm:w-auto">
             <UiButton
               variant="secondary"
               @click="refreshRecommendation"
               :disabled="isLoading"
+              class="w-full sm:w-auto justify-center"
             >
               <LucideRefreshCw
                 class="w-4 h-4"
@@ -385,10 +381,12 @@ const listVariant = {
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :exit="{ opacity: 0 }"
-          class="flex flex-col items-center justify-center py-20"
+          class="flex flex-col items-center justify-center py-12 sm:py-20"
         >
-          <LucideLoader2 class="w-12 h-12 text-primary-600 animate-spin mb-4" />
-          <p class="text-secondary-600 text-lg">
+          <LucideLoader2
+            class="w-10 h-10 sm:w-12 sm:h-12 text-primary-600 animate-spin mb-3 sm:mb-4"
+          />
+          <p class="text-secondary-600 text-base sm:text-lg text-center">
             Menyiapkan rekomendasi untuk Anda...
           </p>
         </Motion>
@@ -398,25 +396,36 @@ const listVariant = {
           key="error"
           :initial="{ opacity: 0, scale: 0.95 }"
           :animate="{ opacity: 1, scale: 1 }"
-          class="max-w-xl mx-auto"
+          class="max-w-xl mx-auto px-2"
         >
           <UiCard variant="warning" padding="lg">
             <div class="text-center">
               <LucideAlertTriangle
-                class="w-12 h-12 text-amber-600 mx-auto mb-4"
+                class="w-10 h-10 sm:w-12 sm:h-12 text-amber-600 mx-auto mb-3 sm:mb-4"
               />
-              <h3 class="text-lg font-semibold text-secondary-900 mb-2">
+              <h3
+                class="text-base sm:text-lg font-semibold text-secondary-900 mb-2"
+              >
                 Oops! Terjadi Kesalahan
               </h3>
-              <p class="text-secondary-600 mb-6">{{ error }}</p>
+              <p class="text-secondary-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                {{ error }}
+              </p>
               <div
-                class="flex flex-col sm:flex-row items-center justify-center gap-4"
+                class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
               >
-                <UiButton variant="primary" @click="fetchRecommendations">
+                <UiButton
+                  variant="primary"
+                  @click="fetchRecommendations"
+                  class="w-full sm:w-auto"
+                >
                   <LucideRefreshCw class="w-4 h-4" />
                   Coba Lagi
                 </UiButton>
-                <NuxtLink to="/input" class="btn-secondary">
+                <NuxtLink
+                  to="/input"
+                  class="btn-secondary w-full sm:w-auto justify-center"
+                >
                   <LucideEdit class="w-4 h-4" />
                   Ubah Data
                 </NuxtLink>
@@ -431,7 +440,7 @@ const listVariant = {
           initial="initial"
           animate="enter"
           :variants="staggerContainer"
-          class="space-y-8"
+          class="space-y-6 sm:space-y-8"
         >
           <Motion :variants="fadeInUp">
             <MenuCalorieSummary
@@ -443,26 +452,26 @@ const listVariant = {
 
           <div
             v-if="userData?.alergi && userData.alergi.length > 0"
-            class="p-4 rounded-xl bg-amber-50 border border-amber-200"
+            class="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-amber-50 border border-amber-200"
           >
-            <div class="flex items-start gap-3">
+            <div class="flex items-start gap-2 sm:gap-3">
               <LucideAlertCircle
-                class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
+                class="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5"
               />
-              <div>
-                <p class="text-sm font-medium text-amber-800 mb-1">
+              <div class="min-w-0">
+                <p class="text-xs sm:text-sm font-medium text-amber-800 mb-1">
                   Alergi yang Dihindari
                 </p>
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-1.5 sm:gap-2">
                   <span
                     v-for="allergy in userData.alergi"
                     :key="allergy"
-                    class="inline-flex items-center px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-medium capitalize"
+                    class="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] sm:text-xs font-medium capitalize"
                   >
                     {{ allergy }}
                   </span>
                 </div>
-                <p class="text-xs text-amber-600 mt-2">
+                <p class="text-[10px] sm:text-xs text-amber-600 mt-1.5 sm:mt-2">
                   Menu yang mengandung bahan ini sudah diganti dengan alternatif
                   yang aman.
                 </p>
@@ -470,7 +479,7 @@ const listVariant = {
             </div>
           </div>
 
-          <div class="space-y-6">
+          <div class="space-y-4 sm:space-y-6">
             <Motion
               v-for="(section, index) in mealSections"
               :key="index"
@@ -483,18 +492,22 @@ const listVariant = {
 
           <Motion
             :variants="fadeInUp"
-            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4"
           >
             <UiButton
               variant="primary"
               size="lg"
               @click="refreshRecommendation"
+              class="w-full sm:w-auto"
             >
-              <LucideRefreshCw class="w-5 h-5" />
+              <LucideRefreshCw class="w-4 h-4 sm:w-5 sm:h-5" />
               Dapatkan Menu Berbeda
             </UiButton>
-            <NuxtLink to="/input" class="btn-secondary py-3 px-6">
-              <LucideEdit class="w-5 h-5" />
+            <NuxtLink
+              to="/input"
+              class="btn-secondary py-2.5 sm:py-3 px-5 sm:px-6 w-full sm:w-auto justify-center"
+            >
+              <LucideEdit class="w-4 h-4 sm:w-5 sm:h-5" />
               Ubah Data Diri
             </NuxtLink>
           </Motion>
