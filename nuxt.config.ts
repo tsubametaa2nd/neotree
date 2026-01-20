@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Neotree - Rekomendasi Menu Sehat Harian",
+      title: "Neotreetion - Rekomendasi Menu Sehat Harian",
       htmlAttrs: {
         lang: "id",
       },
