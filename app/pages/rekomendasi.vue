@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Motion, AnimatePresence } from "motion-v";
 useSeoMeta({
-  title: "Rekomendasi Menu Anda - Neotree",
+  title: "Rekomendasi Menu Anda - Neotreetion",
   description:
     "Lihat rekomendasi menu sehat harian yang dipersonalisasi berdasarkan kebutuhan kalori Anda.",
 });
@@ -157,7 +157,7 @@ const fetchRecommendations = async () => {
 
   try {
     // Get user data from session storage
-    const storedData = sessionStorage.getItem("neotree-user-data");
+    const storedData = sessionStorage.getItem("neotreetion-user-data");
     if (!storedData) {
       router.push("/input");
       return;

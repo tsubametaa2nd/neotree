@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Motion } from "motion-v";
 useSeoMeta({
-  title: "Mulai Rekomendasi - Neotree",
+  title: "Mulai Rekomendasi - Neotreetion",
   description:
     "Masukkan data diri Anda untuk mendapatkan rekomendasi menu sehat harian yang dipersonalisasi.",
 });
@@ -110,7 +110,7 @@ const handleSubmit = async () => {
     alergi: formData.alergi,
   };
 
-  sessionStorage.setItem("neotree-user-data", JSON.stringify(userData));
+  sessionStorage.setItem("neotreetion-user-data", JSON.stringify(userData));
 
   await router.push("/rekomendasi");
 };

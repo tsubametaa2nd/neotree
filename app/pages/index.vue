@@ -17,7 +17,7 @@ import {
 import CountUp from "../components/ui/CountUp.vue";
 
 useSeoMeta({
-  title: "Neotree - Konsultasi Gizi & Menu Sehat Personal",
+  title: "Neotreetion - Konsultasi Gizi & Menu Sehat Personal",
   description:
     "Platform konsultasi gizi pintar yang menyajikan rekomendasi menu sehat harian berbasis medis. Disesuaikan dengan metabolisme dan kebutuhan tubuh Anda.",
 });
