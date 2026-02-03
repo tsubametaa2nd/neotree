@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "Dapatkan rekomendasi menu sehat harian yang disesuaikan dengan kebutuhan kalori dan preferensi Anda. Panduan nutrisi seimbang untuk gaya hidup sehat.",
+            "Dapatkan rekomendasi menu sehat harian yang bisa disesuaikan dengan kebutuhan kalori dan preferensi Anda. Panduan nutrisi seimbang untuk gaya hidup sehat.",
         },
         { name: "format-detection", content: "telephone=no" },
         { name: "theme-color", content: "#16a34a" },
